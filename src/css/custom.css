@@ -1,0 +1,26 @@
+:root {
+  --primary-background: #005d5d;
+  --secondary-background: #febe11;
+}
+
+.btn-primary {
+  border-color: var(--primary-background) !important;
+  background-color: var(--primary-background) !important;
+  color: white !important;
+}
+
+.btn-highlighted {
+  border-color: var(--secondary-background) !important;
+  background-color: var(--secondary-background) !important;
+  color: black !important;
+}
+
+.badge-primary {
+  border-color: var(--primary-background) !important;
+  background-color: var(--primary-background) !important;
+  color: white !important;
+}
+
+.nav-link {
+  color: #32383e !important;
+}
