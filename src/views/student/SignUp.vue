@@ -145,17 +145,18 @@
               self.showError(error.message);
             });
         }
-      },
-      mounted: function () {
-        var accessCode = sessionStorage('accessCode');
+      }
+    },
+    mounted() {
+      var accessCode = sessionStorage.getItem('accessCode');
 
-        if (accessCode == null || accessCode == '') {
-          this.$router.replace({name: "AccessCode"});
-        }
-        else {
-          this.accessCode = sessionStorage.getItem('accessCode');
-          this.cachedEmail = sessionStorage.getItem('cachedEmail');
-        }
+      if (accessCode == null || accessCode == '') {
+        this.$router.replace({name: "AccessCode"});
+      }
+      else {
+        this.accessCode = accessCode;
+        this.cachedEmail = sessionStorage.getItem('cachedEmail');
+        this.email = this.cachedEmail;
       }
     }
   }

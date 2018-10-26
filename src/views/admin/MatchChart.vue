@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="chartContainer">
     <LoadingScreen v-if="isLoading" />
     <div v-else>
       <b-table striped bordered :items="matches" :fields="fields" class="dataTable">
@@ -98,6 +98,12 @@
 </script>
 
 <style scoped>
+  .chartContainer {
+    overflow: scroll;
+  }
+  .deleteButton {
+    width: 100px;
+  }
   .buttonContainer {
     margin-top: 20px;
   }

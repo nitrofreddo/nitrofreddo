@@ -1,11 +1,17 @@
 <template>
-  <div>
+  <div class="chartContainer">
     <LoadingScreen v-if="isLoading" />
     <div v-else>
       <b-alert show v-if="students.length == 0">No Mentees</b-alert>
       <b-table v-else striped bordered :items="students" :fields="fields" class="dataTable">
+        <template slot="name" slot-scope="row">
+          {{row.item.firstName}} {{row.item.lastName}}
+        </template>
         <template slot="actions" slot-scope="row">
           <LoadingButton class="deleteButton" variant="danger" @click="deleteUser(row.item.uid); row.item.isLoading = true" title="Delete" :is-loading="row.item.isLoading" />
+        </template>
+        <template slot="pronoun" slot-scope="row">
+          {{pronounLocalization(row.item.pronoun)}}
         </template>
       </b-table>
       <div class="buttonContainer">
@@ -32,7 +38,12 @@
         isLoading: false,
         isRefreshing: false,
         fields: [
+          { key: 'name', sortable: true},
           { key: 'email', sortable: true },
+          { key: 'phone', sortable: false },
+          { key: 'birthday', sortable: true },
+          { key: 'major', sortable: true },
+          { key: 'linkedIn', label: 'LinkedIn Profile', sortable: false },
           'actions'
         ]
       }
@@ -76,6 +87,9 @@
 </script>
 
 <style scoped>
+  .chartContainer {
+    overflow: scroll;
+  }
   .deleteButton {
     width: 100px;
   }
